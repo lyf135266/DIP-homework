@@ -29,10 +29,10 @@ train.py
 ```
 
 ## Results (need add more result images)
-### Basic Transformation
-<img src="pics/trans.gif" alt="alt text" width="800">
+### Poisson Image Editing
+<img src="pics/blend1.png" alt="alt text" width="800">
 
-### Point Guided Deformation:
+### Pix2Pix:
 <img src="pics/wrap.gif" alt="alt text" width="800">
 
 ## Acknowledgement
