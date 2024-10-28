@@ -31,9 +31,10 @@ train.py
 ## Results (need add more result images)
 ### Poisson Image Editing
 <img src="pics/blend1.png" alt="alt text" width="800">
+<img src="pics/blend2.png" alt="alt text" width="800">
 
 ### Pix2Pix:
-<img src="pics/wrap.gif" alt="alt text" width="800">
+<img src="pics/result_1.png" alt="alt text" width="800">
 
 ## Acknowledgement
 
