@@ -1,10 +1,10 @@
-## Implementation of Image Geometric Transformation
+## Implementation of traditional DIP (Poisson Image Editing) and deep learning-based DIP (Pix2Pix) with PyTorch.
 
-This repository is Yifei Li's implementation of Assignment_01 of DIP. 
-
-<img src="pics/teaser.png" alt="alt text" width="800">
+This repository is Yifei Li's implementation of Assignment_02 of DIP. 
 
 ## Requirements
+
+需要安装anaconda3-2024.06-1以及pytorch.
 
 To install requirements:
 
@@ -12,19 +12,20 @@ To install requirements:
 python -m pip install -r requirements.txt
 ```
 
+Dataset:facades_dataset
 
 ## Running
 
-To run basic transformation, run:
+To run Poisson Image Editing, run:
 
-```basic
-python run_global_transform.py
+```Poisson Image Editing
+run_blending_gradio.py
 ```
 
-To run point guided transformation, run:
+To run Pix2Pix, run:
 
-```point
-python run_point_transform.py
+```Pix2Pix
+train.py
 ```
 
 ## Results (need add more result images)
