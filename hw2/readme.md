@@ -33,6 +33,8 @@ train.py
 <img src="pics/blend1.png" alt="alt text" width="800">
 <img src="pics/blend2.png" alt="alt text" width="800">
 采用了cv2库的fillpoly函数
+
+
 ### Pix2Pix:
 <img src="pics/result_1.png" alt="alt text" width="800">
 采用了全卷积网络，最大通道数为512，但生成的结果很差，loss有0.3左右
