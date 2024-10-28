@@ -36,8 +36,3 @@ train.py
 ### Pix2Pix:
 <img src="pics/result_1.png" alt="alt text" width="800">
 
-## Acknowledgement
-
->📋 Thanks for the algorithms proposed by [Image Warping by Radial Basis
- Functions Application to Facial
- Expressions](https://www.sci.utah.edu/~gerig/CS6640-F2010/Project3/Arad-1995.pdf).
