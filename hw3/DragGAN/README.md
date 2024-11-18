@@ -16,3 +16,6 @@ DrawGAN配置可参照官方源码，在Windows平台安装有诸多bug，已知
 读取字体的大小的函数getsize()被弃用，需要更改为getbbox()
 
 需要安装setuptools
+
+### 算法说明
+可下载dlib68个人脸特征点检测的训练模型(https://github.com/davisking/dlib-models/blob/master/shape_predictor_68_face_landmarks.dat.bz2/)
