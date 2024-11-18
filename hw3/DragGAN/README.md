@@ -24,4 +24,4 @@ DrawGAN配置可参照官方源码，在Windows平台安装有诸多bug，已知
 
 特征点示例如下:
 
-<img src="pics/result_1.png" alt="alt text" width="800">
+<img src="pics/dlib.png" alt="alt text" width="800">
