@@ -1,10 +1,10 @@
-# Assignment 3 - Play with GANs
+# Assignment 3 - Automatic Portrait Editor
 
-### In this assignment, you will implement two methods for using GANs in digital image processing.
+### 本次作业采用了DrawGAN与dlib, 实现了一个自动肖像编辑器功能.
 
 ### Resources:
-- [DragGAN](https://vcai.mpi-inf.mpg.de/projects/DragGAN/): [Implementaion 1](https://github.com/XingangPan/DragGAN) & [Implementaion 2](https://github.com/OpenGVLab/DragGAN)
-- [Facial Landmarks Detection](https://github.com/1adrianb/face-alignment)
+- [DragGAN](https://vcai.mpi-inf.mpg.de/projects/DragGAN/): [Implementaion 1](https://github.com/XingangPan/DragGAN)
+- [Facial Landmarks Detection](https://github.com/davisking/dlib)
 
 ---
 
