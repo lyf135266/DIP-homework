@@ -7,4 +7,4 @@
 - [Facial Landmarks Detection by dlib](https://github.com/davisking/dlib)
 
 ### 配置说明
--本次作业以DrawGAN官方源码为基础，导入了dlib功能包，因此仅需在官方源码基础上添加opencv-python库以及dlib库，
+本次作业以DrawGAN官方源码为基础，并在此基础上添加opencv-python库以及dlib库，
