@@ -32,4 +32,4 @@ DrawGAN配置可参照官方源码，在Windows平台安装有诸多bug，已知
 
 如下图所示：
 
-<img src="_screenshots/00002.png" alt="alt text" width="800">
+<img src="pics/00002.png" alt="alt text" width="800">
