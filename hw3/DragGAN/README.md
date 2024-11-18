@@ -6,7 +6,4 @@
 - [DragGAN](https://vcai.mpi-inf.mpg.de/projects/DragGAN/): [Implementaion 1](https://github.com/XingangPan/DragGAN)
 - [Facial Landmarks Detection by dlib](https://github.com/davisking/dlib)
 
----
-
-\
-See [作业03-Play_with_GANs.pptx](https://rec.ustc.edu.cn/share/705bfa50-6e53-11ef-b955-bb76c0fede49) for detailed requirements.
+### 
