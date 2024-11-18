@@ -11,6 +11,8 @@
 并在生成器误差中加入L1误差(生成的图片与真实图片的差距)，权重设置为5.0
 
 ### 结果展示
-自动瘦脸功能如下,分别为输入及输出：
+训练数据集仍采用facades数据集
+
+800次训练后的结果如下:
 <img src="_screenshots/00000.png" alt="alt text" width="800">
 <img src="_screenshots/00001.png" alt="alt text" width="800">
