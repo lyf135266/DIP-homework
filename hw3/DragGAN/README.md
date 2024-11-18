@@ -4,7 +4,7 @@
 
 ### Resources:
 - [DragGAN](https://vcai.mpi-inf.mpg.de/projects/DragGAN/): [Implementaion 1](https://github.com/XingangPan/DragGAN)
-- [Facial Landmarks Detection](https://github.com/davisking/dlib)
+- [Facial Landmarks Detection by dlib](https://github.com/davisking/dlib)
 
 ---
 
