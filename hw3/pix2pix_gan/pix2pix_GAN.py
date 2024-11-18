@@ -181,7 +181,7 @@ def train(epoch):
         optimizer_G.zero_grad()
         g_loss_GAN = criterion_GAN(D(real_A, fake_B), real_labels)
         g_loss_L1 = torch.mean(torch.abs(fake_B-real_B))
-        g_loss = g_loss_GAN + 7.0*g_loss_L1
+        g_loss = g_loss_GAN + 5.0*g_loss_L1
         g_loss.backward()
         optimizer_G.step()
         if i % 50 == 0:
