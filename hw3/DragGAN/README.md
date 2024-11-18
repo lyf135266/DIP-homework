@@ -21,3 +21,7 @@ DrawGAN配置可参照官方源码，在Windows平台安装有诸多bug，已知
 可下载68人脸特征点检测训练模型(https://github.com/davisking/dlib-models/blob/master/shape_predictor_68_face_landmarks.dat.bz2/)
 
 并以此对图片中人脸特征点进行检测
+
+特征点示例如下:
+
+<img src="pics/result_1.png" alt="alt text" width="800">
