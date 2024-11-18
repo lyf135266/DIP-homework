@@ -29,3 +29,7 @@ DrawGAN配置可参照官方源码，在Windows平台安装有诸多bug，已知
 以瘦脸为例，我们仅需将DrawGAN的输入点分别设置为5号特征点以及12号特征点
 
 目标点分别设置为5号特征点向右偏移k个像素(k=25)，12号特征点向左偏移k个像素(k=25)
+
+如下图所示：
+
+<img src="_screenshots/00002.png" alt="alt text" width="800">
