@@ -14,6 +14,7 @@
 训练数据集仍采用facades数据集
 
 800次训练后的结果如下:
+
 <img src="epoch_795/result_1.png" alt="alt text" width="800">
 <img src="epoch_795/result_2.png" alt="alt text" width="800">
 <img src="epoch_795/result_3.png" alt="alt text" width="800">
