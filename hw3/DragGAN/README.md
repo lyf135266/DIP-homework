@@ -33,3 +33,5 @@ DrawGAN配置可参照官方源码，在Windows平台安装有诸多bug，已知
 如下图所示：
 
 <img src="pics/00002.png" alt="alt text" width="800">
+
+注意：需要在viz\drag_widget.py文件夹中添加这一功能(可将手动add_point绑定的函数替换为上述功能)
