@@ -12,3 +12,4 @@ pillow>=9.4.0
 torchvision>=0.15.2
 imageio>=2.9.0
 numpy==1.26.4
+opencv-python==4.0.10
