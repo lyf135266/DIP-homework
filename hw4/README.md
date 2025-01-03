@@ -1,6 +1,6 @@
 # Assignment 4 - Implement Simplified 3D Gaussian Splatting
 
-This assignment covers a complete pipeline for reconstructing a 3D scene represented by 3DGS from multi-view images. The following steps use the [chair folder](data/chair); you can use any other folder by placing images/ in it.
+本次作业目的为实现简易版的3D Gaussian Splatting
 
 ### Resources:
 - [Paper: 3D Gaussian Splatting](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/)
@@ -10,15 +10,9 @@ This assignment covers a complete pipeline for reconstructing a 3D scene represe
 ---
 
 ### Step 1. Structure-from-Motion
-First, we use Colmap to recover camera poses and a set of 3D points. Please refer to [11-3D_from_Multiview.pptx](https://rec.ustc.edu.cn/share/705bfa50-6e53-11ef-b955-bb76c0fede49) to review the technical details.
-```
-python mvs_with_colmap.py --data_dir data/chair
-```
+首先需要通过colmap从多视角图片获得稀疏点云:
 
-Debug the reconstruction by running:
-```
-python debug_mvs_by_projecting_pts.py --data_dir data/chair
-```
+<img src="data/chair/projections/r_0.png" alt="alt text" width="800">
 
 ### Step 2. A Simplified 3D Gaussian Splatting (Your Main Part)
 From the debug output of Step 1, you can see that the 3D points are sparse for rendering the whole image. We will expand each point to a 3D Gaussian to make it cover more 3D space.
