@@ -25,10 +25,26 @@
 ```
 
 #### 2.2 Project 3D Gaussians to Obtain 2D Gaussians
-According to equation (5), we need to project the 3D Gaussians to the image space by transforming with the world to camera transformation *_W_* and the Jacobian matrix *_J_* of the projection transformation. You need to fill [the code here](gaussian_renderer.py#L26) for computing the projection.
+将3D Gaussians通过投影变换得到二维高斯:
+```
+        N = means3D.shape[0]
+        cam_points = means3D @ R.T + t.unsqueeze(0)  # (N, 3)
+        depths = cam_points[:, 2].clamp(min=1.)
+        screen_points = cam_points @ K.T
+        means2D = screen_points[..., :2] / screen_points[..., 2:3]
+
+        J_proj = torch.zeros((N, 2, 3), device=means3D.device)
+        J_proj[:, 0, 0] = 1.0 / cam_points[:, 2]
+        J_proj[:, 1, 1] = 1.0 / cam_points[:, 2]
+        J_proj[:, 0, 2] = -cam_points[:, 0] / (cam_points[:, 2] ** 2)
+        J_proj[:, 1, 2] = -cam_points[:, 1] / (cam_points[:, 2] ** 2)
+
+        covs_cam = torch.bmm(R.unsqueeze(0).expand(N, -1, -1), torch.bmm(covs3d, R.T.unsqueeze(0).expand(N, -1, -1)))
+        covs2D = torch.bmm(J_proj, torch.bmm(covs_cam, J_proj.permute(0, 2, 1)))
+```
 
 #### 2.3 Compute the Gaussian Values
-We need to compute 2D Gaussians for volume rendering. A 2D Gaussian is represented by:
+计算2D高斯用于体渲染. 2D高斯表示如下:
 
 $$
   f(\mathbf{x}; \boldsymbol{\mu}\_{i}, \boldsymbol{\Sigma}\_{i}) = \frac{1}{2 \pi \sqrt{ | \boldsymbol{\Sigma}\_{i} |}} \exp \left ( {-\frac{1}{2}} (\mathbf{x} - \boldsymbol{\mu}\_{i})^T \boldsymbol{\Sigma}\_{i}^{-1} (\mathbf{x} - \boldsymbol{\mu}\_{i}) \right ) = \frac{1}{2 \pi \sqrt{ | \boldsymbol{\Sigma}\_{i} |}} \exp \left ( P_{(\mathbf{x}, i)} \right )
@@ -40,10 +56,27 @@ $$
   P_{(\mathbf{x}, i)} = {-\frac{1}{2}} (\mathbf{x} - \boldsymbol{\mu}\_{i})^T \mathbf{\Sigma}\_{i}^{-1} (\mathbf{x} - \boldsymbol{\mu}\_{i})
 $$
 
-You need to fill [the code here](gaussian_renderer.py#L61) for computing the Gaussian values.
+通过如下代码计算2D高斯:
+```
+        N = means2D.shape[0]
+        H, W = pixels.shape[:2]
+
+        dx = pixels.unsqueeze(0) - means2D.reshape(N, 1, 1, 2)
+        eps = 1e-4
+        covs2D = covs2D + eps * torch.eye(2, device=covs2D.device).unsqueeze(0)
+
+        inv_covs = torch.inverse(covs2D)
+        det_covs = torch.det(covs2D).clamp(min=1e-6)
+
+        dx = dx.unsqueeze(-1)
+        mahalanobis_dist = torch.matmul(dx.transpose(-2, -1), torch.matmul(inv_covs.unsqueeze(1).unsqueeze(1), dx))
+        mahalanobis_dist = mahalanobis_dist.squeeze(-1).squeeze(-1)
+
+        gaussian = torch.exp(-0.5 * mahalanobis_dist) / (2 * np.pi * torch.sqrt(det_covs)).view(N, 1, 1)
+```
 
 #### 2.4 Volume Rendering (α-blending)
-According to equations (1-3), using these `N` ordered 2D Gaussians, we can compute their alpha and transmittance values at each pixel location in an image.
+通过体渲染获得最终的图片
 
 The alpha value of a 2D Gaussian $i$ at a single pixel location $\mathbf{x}$ can be calculated using:
 
@@ -61,14 +94,12 @@ $$
   T_{(\mathbf{x}, i)} = \prod_{j \lt i} (1 - \alpha_{(\mathbf{x}, j)})
 $$
 
-Fill [the code here](gaussian_renderer.py#L83) for final rendering computation.
-
-After implementation, build your 3DGS model:
+权重计算如下:
 ```
-python train.py --colmap_dir data/chair --checkpoint_dir data/chair/checkpoints
+        weights = alphas * torch.cumprod(1 - alphas + 1e-4, dim=0).roll(1, dims=0)
+        weights[0] = alphas[0]
 ```
 
-### Compare with the original 3DGS Implementation
-Since we use a pure PyTorch implementation, the training speed and GPU memory usage are far from satisfactory. Also, we do not implement some crucial parts like adaptive Gaussian densification scheme. Run the [original 3DGS implementation](https://github.com/graphdeco-inria/gaussian-splatting) with the same dataset to compare the results.
+### 结果
 
 
