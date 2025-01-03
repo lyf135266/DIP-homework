@@ -101,6 +101,6 @@ $$
 ```
 
 ### 结果
-本次实验一半时间用在安装colmap以及pytorch3d上，我的电脑只有GTX 1650显卡，跑train.py经常占用率100%,温度快速升高，没能跑完整个训练过程。以下是第一次epoch的结果:
+本次实验一半时间用在安装colmap以及pytorch3d上，我的电脑只有GTX 1650显卡，跑train.py经常占用率100%,显卡温度快速升高，没能跑完整个训练过程。以下是第一次epoch的结果:
 <img src="data/chair/checkpoints/debug_images/epoch_0000/r_77.png" alt="alt text" width="800">
 
