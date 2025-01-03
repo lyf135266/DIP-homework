@@ -13,12 +13,16 @@
 首先需要通过colmap从多视角图片获得稀疏点云:
 
 <img src="data/chair/projections/r_0.png" alt="alt text" width="800">
-
-### Step 2. A Simplified 3D Gaussian Splatting (Your Main Part)
-From the debug output of Step 1, you can see that the 3D points are sparse for rendering the whole image. We will expand each point to a 3D Gaussian to make it cover more 3D space.
+<img src="data/chair/projections/r_1.png" alt="alt text" width="800">
+<img src="data/chair/projections/r_2.png" alt="alt text" width="800">
+### Step 2. A Simplified 3D Gaussian Splatting 
 
 #### 2.1 3D Gaussians Initialization
-Refer to the [original paper](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/3d_gaussian_splatting_low.pdf). For converting 3D points to 3D Gaussians, we need to define the covariance matrix for each point; the initial Gaussians' centers are just the points. According to equation (6), for defining covariance, we define a scaling matrix S and a rotation matrix R. Since we need to use the 3D Gaussians for volume rendering, we also need the opacity attribute and the color attribute for each Gaussian. The volume rendering process is formulated with equations (1), (2), (3). [The code here](gaussian_model.py#L32) contains functions to initialize these attributes as optimizable parameters. You need to fill [the code here](gaussian_model.py#L103) for computing the 3D Covariance matrix from the quaternion (for rotation) and the scaling parameters.
+需要给定3D Gaussians的各项参数作为初始化，初始中心选择为稀疏点云中心，协方差矩阵设置为旋转矩阵与缩放矩阵的积:
+
+ '''
+    Covs3d = R @ S @ S @ R.transpose(-1, -2)
+ '''
 
 #### 2.2 Project 3D Gaussians to Obtain 2D Gaussians
 According to equation (5), we need to project the 3D Gaussians to the image space by transforming with the world to camera transformation *_W_* and the Jacobian matrix *_J_* of the projection transformation. You need to fill [the code here](gaussian_renderer.py#L26) for computing the projection.
