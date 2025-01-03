@@ -20,9 +20,9 @@
 #### 2.1 3D Gaussians Initialization
 需要给定3D Gaussians的各项参数作为初始化，初始中心选择为稀疏点云中心，协方差矩阵设置为旋转矩阵与缩放矩阵的积:
 
- '''
+```
     Covs3d = R @ S @ S @ R.transpose(-1, -2)
- '''
+```
 
 #### 2.2 Project 3D Gaussians to Obtain 2D Gaussians
 According to equation (5), we need to project the 3D Gaussians to the image space by transforming with the world to camera transformation *_W_* and the Jacobian matrix *_J_* of the projection transformation. You need to fill [the code here](gaussian_renderer.py#L26) for computing the projection.
