@@ -103,4 +103,4 @@ $$
 ### 结果
 本次实验一半时间用在安装colmap以及pytorch3d上，电脑为RTX 2060显卡，训练时长7小时，以下是第一个epoch的结果以及第100个epoch的结果:
 <img src="data/chair/checkpoints/debug_images/epoch_0000/r_77.png" alt="alt text" width="800">
-<img src="data/chair/checkpoints/debug_images/epoch_0000/r_87.png" alt="alt text" width="800">
+<img src="data/chair/checkpoints/debug_images/epoch_0000/r_36.png" alt="alt text" width="800">
