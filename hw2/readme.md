@@ -38,3 +38,8 @@ train.py
 ### Pix2Pix:
 <img src="pics/result_1.png" alt="alt text" width="800">
 采用了全卷积网络，最大通道数为512，但生成的结果很差，loss有0.3左右
+
+原代码框架中语义图片与真实图片的tag打反了，导致出现了上述错误，经修正后可得到正确的结果，如下所示:
+<img src="pics/result_2.png" alt="alt text" width="800">
+<img src="pics/result_3.png" alt="alt text" width="800">
+<img src="pics/result_4.png" alt="alt text" width="800">
